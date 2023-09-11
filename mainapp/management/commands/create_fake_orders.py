@@ -18,9 +18,4 @@ class Command(BaseCommand):
                         product=p,
                         sum_order=1000.54 + i,
                     )
-                    order.save()   
-
-        
-
-
-                   
+                    order.save()

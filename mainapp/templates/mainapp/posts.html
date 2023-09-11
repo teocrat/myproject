@@ -1,0 +1,16 @@
+{% extends "base.html" %} {% load static %} {% block title %} {{ block.super }}
+{{ title }} {% endblock %} {% block content %}
+
+<div class="container">
+  <h1 class="header1">{{ title }}</h1>
+  <ul class="header1">
+    {% for post in posts %} {% if post.published %}
+    <!-- <li><a href="{% url 'detail_post' post.pk %}">{{ post.title }}</a></li> -->
+    <li><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></li>
+    {% else %}
+    <li>{{ post.title }}</li>
+    {% endif %} {% endfor %}
+  </p>
+</div>
+
+{% endblock %}

@@ -1,0 +1,45 @@
+{% load static %}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <title>
+        {% block title %}
+        
+        {% endblock %}
+    </title>
+</head>
+<body>
+
+<header>
+    <div class="nav container">
+        <a href="{% url 'index' %}">Main</a>
+        <a href="{% url 'play' %}">Play</a>
+        <a href="{% url 'about' %}">About</a>
+        
+    </div>
+</header>
+
+<h1 class="header1">This is my site</h1>
+<section class="top_item container">
+    <img src="{% static 'vinni2.png' %}" alt="vinni">
+    <p class="top_text">Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+        Deleniti et, eveniet hic inventore laborum praesentium
+        recusandae rerum vero. Alias enim ipsum iusto maiores quaerat quam quos,
+        sunt temporibus ullam voluptatum.</p>
+    <img src="{% static 'pngegg.png' %}" alt="snout">
+</section>
+
+{% block content %}
+Non
+{% endblock %}
+
+<footer class="container">
+    <p class="footer_text">© All Rights Reserved.</p>
+</footer>
+
+</body>
+</html>

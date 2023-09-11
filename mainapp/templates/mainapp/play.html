@@ -1,0 +1,11 @@
+{% extends "base.html" %} {% load static %} {% block title %} {{ block.super }}
+{{ title }} {% endblock %} {% block content %}
+
+<h2 class="header1">Choose a game</h2>
+<div class="nav container">
+  <a href="{% url 'heads' %}">Heads or tails</a>
+  <a href="{% url 'cube' %}">Cube</a>
+  <a href="{% url 'ran_num' %}">Random number</a>
+</div>
+
+{% endblock %}
