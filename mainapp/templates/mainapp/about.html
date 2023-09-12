@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block title %} {{ block.super }} {{ title }} {% endblock %}
+
+{% block content %}
+<div class="container">
+  <body>
+    <h1 class="header1" style="color: blueviolet;">{{ title }}</h1>
+    <p>
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste odit,
+      adipisci culpa ut recusandae labore pariatur et soluta cum aut autem
+      aliquam atque minus quas facere qui earum sit odio.
+    </p>
+    <p>
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe repellendus
+      delectus ipsa quidem quisquam similique, eligendi sequi tempora reiciendis
+      distinctio dolores eius. Dicta, iure? Porro cumque harum, debitis
+      inventore quasi eveniet, dicta alias nemo quas optio, eligendi sed commodi
+      distinctio eum velit aspernatur excepturi ipsa iste quaerat! Maxime,
+      earum. Vitae.
+    </p>
+  </body>
+</div>
+{% endblock %}

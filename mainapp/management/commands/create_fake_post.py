@@ -16,5 +16,6 @@ class Command(BaseCommand):
                             post=f'Post{i}',
                             date=f'2022-04-05',
                             author=a,
-                            category=f'Category{i}', )
+                            category=f'Category{i}',
+                            published=True, )
                 post.save()

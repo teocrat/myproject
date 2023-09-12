@@ -1,5 +1,6 @@
 from django.db import models
 from django.db.models import Manager
+from django.urls import reverse
 
 
 class GameModel(models.Model):
@@ -39,6 +40,9 @@ class Post(models.Model):
     viewed = models.IntegerField(default=0)
     published = models.BooleanField(default=False)
 
+    def get_absolute_url(self,):
+        return reverse('detail_post', kwargs={'pk': self.pk})
+
     def __str__(self):
         return f'{self.author} - {self.title} - {self.published} - {self.date}'
 
@@ -70,6 +74,13 @@ class Orders(models.Model):
     product = models.ForeignKey(Products, on_delete=models.CASCADE)
     sum_order = models.DecimalField(max_digits=10, decimal_places=2)
     order_date = models.DateField(auto_now_add=True)
+
+    class Meta:
+        ordering = ['-id']
+
+    @staticmethod
+    def return_last(n):
+        return Orders.objects.all()[:n]
 
     def __str__(self):
         return f'Buyer: {self.client} - Product: {self.product} - Sum: {self.sum_order}'

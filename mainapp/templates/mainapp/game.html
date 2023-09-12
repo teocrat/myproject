@@ -1,0 +1,11 @@
+{% extends "base.html" %} {% load static %} {% block title %} {{ block.super }}
+{{ title }} {% endblock %} {% block content %}
+
+<div class="container">
+    <h1 class="header1">{{ title }}</h1>
+    {% for result in results %}
+    <p class="header1">{{ result }}</p>
+    {% endfor %} 
+</div>
+
+{% endblock %}
