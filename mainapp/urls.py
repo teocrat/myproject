@@ -21,5 +21,12 @@ urlpatterns = [
     path('detail_post/<int:pk>', views.DetailPost.as_view(), name='detail_post'),
     path('orders/<int:id>', views.AllOrders.as_view(), name='orders'),
     path('products/<int:id>/<int:count>', views.AllProducts.as_view(), name='products'),
+    path('add_author/', views.AddAuthor.as_view(), name='add_author'),
+    path('author_page/<int:pk>', views.AuthorPage.as_view(), name='author_page'),
+    path('add_post/', views.AddPost.as_view(), name='add_post'),
+    path('prod_detail/', views.ProductDetailView.as_view(), name='prod_detail'),
+    path('prod_edit/<int:pk>/',views.ProductUpdateView.as_view(), name='prod_edit'),
+    
+    
 ]
 
