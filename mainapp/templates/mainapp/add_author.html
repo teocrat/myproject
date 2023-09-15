@@ -1,0 +1,16 @@
+{% extends "base.html" %} {% load static %} {% block title %} {{ block.super }}
+{{ title }} {% endblock %} {% block content %}
+
+  <div class="container">
+    <div class="header1">
+        <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit">
+    </form>
+  </div>
+
+    
+  </div>
+
+{% endblock %}

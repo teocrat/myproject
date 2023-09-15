@@ -1,5 +1,5 @@
 from django.core.management import BaseCommand
-from mainapp.models import Orders, Buyer, Products
+from mainapp.models import Orders, Buyer
 
 
 class Command(BaseCommand):
@@ -11,11 +11,9 @@ class Command(BaseCommand):
     def handle(self, *args, **kwargs):
         count = kwargs.get('count')
         for b in Buyer.objects.all()[:3]:
-            for p in Products.objects.all()[:3]:
-                for i in range(1, count + 1):
-                    order = Orders(
-                        client=b,
-                        product=p,
-                        sum_order=1000.54 + i,
-                    )
-                    order.save()
+            for i in range(1, count + 1):
+                order = Orders(
+                    client=b,
+                    sum_order=1000.54 + i,
+                )
+                order.save()

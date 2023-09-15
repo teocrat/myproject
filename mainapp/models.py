@@ -27,6 +27,9 @@ class Author(models.Model):
     biography = models.TextField()
     bd = models.DateField()
 
+    def get_absolute_url(self):
+        return reverse('author_page', kwargs={'pk': self.pk})
+
     def __str__(self):
         return f'{self.name} {self.surname}'
 
@@ -40,7 +43,7 @@ class Post(models.Model):
     viewed = models.IntegerField(default=0)
     published = models.BooleanField(default=False)
 
-    def get_absolute_url(self,):
+    def get_absolute_url(self):
         return reverse('detail_post', kwargs={'pk': self.pk})
 
     def __str__(self):
@@ -65,13 +68,16 @@ class Products(models.Model):
     amount = models.IntegerField()
     prod_date = models.DateField(auto_now_add=True)
 
+    def get_absolute_url(self):
+        return reverse('prod_detail', kwargs={'pk': self.pk})
+
     def __str__(self):
         return f'Product: {self.product_name} - Price: {self.price} - Amount: {self.amount}'
 
 
 class Orders(models.Model):
     client = models.ForeignKey(Buyer, on_delete=models.CASCADE)
-    product = models.ForeignKey(Products, on_delete=models.CASCADE)
+    product = models.ManyToManyField(Products)
     sum_order = models.DecimalField(max_digits=10, decimal_places=2)
     order_date = models.DateField(auto_now_add=True)
 

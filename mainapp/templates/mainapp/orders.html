@@ -4,14 +4,17 @@
 <div class="container">
   <h1 class="header1">{{ title }}</h1>
 
-    {% for order in orders %}
-     <h3 class="header1">Order {{ order.id }}</h3>
-        <ul>
-          <li class="header1">Product {{ order.product_id }}</li>
-        </ul>
-        
-    {% endfor %}
   
+  <h3 class="header1">Order {{ order.id }}</h3>
+  <ul>
+    {% for order in orders %}
+      {{ order.client }}<br>
+        {% for prod in orders.product.all %}
+          {{ prod }}
+        {% endfor %}
+  </ul>
+
+  {% endfor %}
 </div>
 
 {% endblock %}

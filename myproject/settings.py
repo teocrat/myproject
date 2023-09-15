@@ -29,9 +29,6 @@ ALLOWED_HOSTS = [
     '127.0.0.1',
     '192.168.0.188',
 ]
-    
-
-
 
 
 # Application definition
@@ -45,6 +42,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'mainapp',
     'playapp',
+    'gameapp',
 ]
 
 MIDDLEWARE = [
@@ -152,17 +150,17 @@ LOGGING = {
     'handlers': {
         'console': {
             'class': 'logging.StreamHandler',
-            'formatter':'verbose',
+            'formatter': 'verbose',
         },
         'file': {
             'class': 'logging.FileHandler',
             'filename': BASE_DIR / 'log'/'log.log',
-            'formatter':'verbose',
+            'formatter': 'verbose',
         },
         'playfile': {
             'class': 'logging.FileHandler',
             'filename': BASE_DIR / 'log'/'play.log',
-            'formatter':'verbose',
+            'formatter': 'verbose',
         },
     },
 
@@ -180,7 +178,7 @@ LOGGING = {
             'handlers': ['console', 'playfile'],
             'level': 'DEBUG',
             'propagate': True,
-            
+
         },
     },
 

@@ -1,11 +1,13 @@
 import logging
+
 from typing import Any
 from django.db import models
 from django.shortcuts import render
 from django.http import HttpResponse
-from mainapp.models import GameModel, Author, Post, Buyer, Orders
-from django.views.generic import TemplateView, DetailView
+from mainapp.models import GameModel, Author, Post, Buyer, Orders, Products
+from django.views.generic import TemplateView, DetailView, ListView, CreateView, UpdateView
 from random import choice, randint
+from .forms import AddAuthorForm, AddPostForm, UpdateProductForm
 
 
 logger = logging.getLogger(__name__)
@@ -112,7 +114,7 @@ class HeadsGame(GameView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         results = [choice(['орел', 'решка'])
-                   for _ in range(self.kwargs['count'])]
+        for _ in range(self.kwargs['count'])]
         context['results'] = results
         context['title'] = 'Heads or tails'
         return context
@@ -146,7 +148,8 @@ class AllPosts(TemplateView):
         context['posts'] = posts
         context['title'] = f'Author{author.id} posts'
         return context
-    
+
+
 class DetailPost(DetailView):
     model = Post
     template_name = 'mainapp/detail_post.html'
@@ -154,23 +157,23 @@ class DetailPost(DetailView):
 
     def get_object(self, queryset=None):
         obj = super().get_object(queryset=queryset)
-        obj.viewed +=1
+        obj.viewed += 1
         obj.save()
         return obj
-    
 
 
-class AllOrders(TemplateView):
+class AllOrders(ListView):
+    model = Orders
     template_name = 'mainapp/orders.html'
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         client = Buyer.objects.get(pk=self.kwargs['id'])
-        orders = Orders.objects.filter(client=client.id).all()
+        orders = Orders.objects.filter(client=client).all()
         context['orders'] = orders
         context['title'] = f'Buyer{client.id} orders'
         return context
-    
+
 
 class AllProducts(TemplateView):
     template_name = 'mainapp/products.html'
@@ -183,5 +186,43 @@ class AllProducts(TemplateView):
         context['orders'] = orders
         context['title'] = f'Buyer{client.id} products'
         return context
+
+
+class AddAuthor(CreateView):
+    model = Author
+    template_name = 'mainapp/add_author.html'
+    forms_class = AddAuthorForm
+    fields = ['name', 'surname', 'email', 'biography', 'bd']
+
+
+class AuthorPage(DetailView):
+    model = Author
+    template_name = 'mainapp/author_page.html'
+
+
+class AddPost(CreateView):
+    model = Post
+    template_name = 'mainapp/add_post.html'
+    fields = ['title', 'post', 'author', 'category']
+    forms_class = AddPostForm
+
+
+
+class ProductUpdateView(UpdateView): 
+    model = Products
+    template_name = 'mainapp/prod_edit.html'
+    fields = ['product_name', 'price']
+    forms_class = UpdateProductForm
     
+
+class ProductDetailView(DetailView):
+    model = Products
+    template_name = 'mainapp/prod_detail.html'
+    
+    
+
+
+
+
+
 
