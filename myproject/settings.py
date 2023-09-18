@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'mainapp',
     'playapp',
     'gameapp',
+    'deployapp',
 ]
 
 MIDDLEWARE = [
