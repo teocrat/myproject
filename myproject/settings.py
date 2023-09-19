@@ -47,8 +47,12 @@ INSTALLED_APPS = [
     'mainapp',
     'playapp',
     'gameapp',
+<<<<<<< HEAD
     'deployapp',
     'debug_toolbar',
+=======
+    'adminapp',
+>>>>>>> main
 ]
 
 MIDDLEWARE = [
@@ -118,7 +122,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/4.2/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'ru-ru'
 
 TIME_ZONE = 'UTC'
 
