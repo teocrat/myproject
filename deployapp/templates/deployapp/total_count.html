@@ -1,0 +1,11 @@
+{% extends "base.html" %} {% load static %} {% block title %} {{ block.super }}
+{{ title }} {% endblock %} {% block content %}
+
+<div class="container header1">
+  <h3>{{ title }}</h3>
+  {% if total %}
+  <p>{{ total }}</p>
+  {% endif %} {% if products %} {{ products.total_quantity}} {% endif %}
+</div>
+
+{% endblock %}
